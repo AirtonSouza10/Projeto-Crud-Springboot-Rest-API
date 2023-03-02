@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+	  <title>Cadastro pessoa</title>
+
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+</head>
+<body>
+	<h1>Cadastro telefones</h1>
+	
+		<div class="row">
+			<div class="input-fiel col s6">	
+				<a href="/cadastropessoa" class="waves-effect waves-light btn"> Cadastro pessoa</a>
+			</div>
+		</div>
+		
+	<div th:each="p : ${pessoaobj}">
+		<div class="row">
+			<div class="input-fiel col s6">
+				<p>ID: <span th:text="${p.id}"></span></p>
+				<p>NOME: <span th:text="${p.nome}"></span></p>
+				<p>SOBRENOME: <span th:text="${p.sobrenome}"></span></p>
+				<p>IDADE: <span th:text="${p.idade}"></span></p>
+			</div>	
+		</div>
+	</div>
+	
+	<h5>Telefones</h5>
+		<div class="row">	
+
+			<br/>
+				<div th:each = "m : ${msg}">
+					<span th:text="${m}"></span>
+				</div>
+			<br/>
+		
+			<form th:action="@{/addfonePessoa/{pessoaid}(pessoaid=${pessoaobj.id})}" method="post" class="cols s12" onsubmit="return validarCampos()? true : false">
+				<div class="row">
+					<div class="input-fiel col s6">
+						<label class="active" for="numero">Número</label>
+						<input type="text" name="numero" id="numero" class="validate">
+					</div>
+					<div class="input-fiel col s6">
+						<label class="active" for="tipo">Tipo</label>
+						<input type="text" name="tipo" id="tipo" class="validate">
+					</div>
+				<div class="row">	
+					<div class="input-fiel col s6">		
+						<input class="waves-effect waves-light btn" type="submit" value="Adicionar">
+					</div>
+				</div>
+					
+				</div>
+			</form>
+		</div>		
+
+	<div class="row">
+		<div class="input-fiel cols12">	
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>NUMERO</th>
+						<th>TIPO</th>
+						<th>EXLCUIR</th>
+					</tr>
+				</thead>
+				
+				<tr th:each="fone : ${telefones}">
+					<td th:text="${fone.numero}"></td>
+					<td th:text="${fone.tipo}"></td>
+					<td><a th:href="@{/removertelefone/{idtelefone}(idtelefone=${fone.id})}" class="waves-effect waves-light btn">Excluir</a></td>					
+				</tr>
+
+			</table>
+		</div>	
+	</div>	
+	
+		
+	
+      
+<script>
+	function validarCampos(){
+		numero = document.getElementById('numero').value;
+		tipo = document.getElementById('tipo').value;		
+		
+		if(numero === ''){
+			alert('numero deve ser informado');
+			return false;
+		}
+		else if(tipo === ''){
+			alert('tipo deve ser informado');
+			return false;			
+		}
+		
+		return true;
+	}
+</script>
+	
+</body>
+</html>
