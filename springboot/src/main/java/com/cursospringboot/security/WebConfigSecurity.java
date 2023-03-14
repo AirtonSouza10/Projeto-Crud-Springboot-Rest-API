@@ -29,6 +29,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()  //permitir restringir acessos
 		.antMatchers("**/css/**").permitAll()
 		.antMatchers("**/js/**").permitAll()
+		.antMatchers("**/imagens/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/cadastropessoa").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()  //permite qualquer user
@@ -53,7 +54,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 
 	          web.ignoring().antMatchers("**/css/**");
 	          web.ignoring().antMatchers("**/js/**");
+	          web.ignoring().antMatchers("**/imagens/**");
 
 	}
+	
 
 }
