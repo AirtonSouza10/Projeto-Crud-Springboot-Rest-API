@@ -10,4 +10,5 @@ import com.cursospringboot.model.Cargo;
 @Transactional
 public interface CargoRepository extends JpaRepository<Cargo, Long>{
 
+	
 }

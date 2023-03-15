@@ -10,4 +10,5 @@ import com.cursospringboot.model.Prazo;
 @Transactional
 public interface PrazoRepository extends JpaRepository<Prazo, Long>{
 
+	
 }

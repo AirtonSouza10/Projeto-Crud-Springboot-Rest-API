@@ -10,4 +10,5 @@ import com.cursospringboot.model.Fornecedor;
 @Transactional
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long>{
 
+	
 }

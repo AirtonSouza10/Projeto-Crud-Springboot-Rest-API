@@ -10,4 +10,5 @@ import com.cursospringboot.model.Loja;
 @Transactional
 public interface LojaRepository extends JpaRepository<Loja, Long>{
 
+	
 }

@@ -10,4 +10,5 @@ import com.cursospringboot.model.Situacao;
 @Transactional
 public interface SituacaoRepository extends JpaRepository<Situacao, Long>{
 
+	
 }
